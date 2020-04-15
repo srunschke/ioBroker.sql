@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "sql-client": "^2.0.3",
-    "@iobroker/adapter-core": "^2.2.1"
+    "@iobroker/adapter-core": "^2.3.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
