@@ -75,6 +75,7 @@
                     sendTo(null, 'test', {
                         config: {
                             dbtype:   $('#dbtype').val(),
+                            socket:   $('#socket').val(),
                             port:     $('#port').val(),
                             host:     $('#host').val(),
                             user:     $('#user').val(),
@@ -108,14 +109,22 @@
             if ($(this).val() === 'sqlite') {
                 $('.baby-sql').show();
                 $('.real-sql').hide();
+                $('.mysql-socket-sql').hide();
                 $('.ms-sql').hide();
             } else if ($(this).val() === 'mssql') {
                 $('.baby-sql').hide();
                 $('.real-sql').show();
+                $('.mysql-socket-sql').hide();
                 $('.ms-sql').show();
+            } else if ($(this).val() === 'mysql-socket') {
+                $('.baby-sql').hide();
+                $('.real-sql').hide();
+                $('.mysql-socket-sql').show();
+                $('.ms-sql').hide();
             } else {
                 $('.baby-sql').hide();
                 $('.ms-sql').hide();
+                $('.mysql-socket-sql').hide();
                 $('.real-sql').show();
             }
         }).trigger('change');
@@ -162,6 +171,7 @@
                 <td><label class="translate" for="dbtype">DB Type</label></td>
                 <td><select id="dbtype" class="value">
                     <option value="mysql">MySQL</option>
+                    <option value="mysql-socket">MySQL local socket</option>
                     <option value="postgresql">PostgreSQL</option>
                     <option value="sqlite">SQLite3</option>
                     <option value="mssql">MS-SQL</option>
@@ -178,22 +188,27 @@
                 <td><input id="port" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="ms-sql real-sql">
+            <tr class="mysql-socket-sql">
+                <td><label class="translate" for"socket">Socket</label></td>
+                <td><input id="socket" class="value"/></td>
+                <td></td>
+            </tr>
+            <tr class="ms-sql real-sql mysql-socket-sql">
                 <td><label class="translate" for="dbname">DB Name</label></td>
                 <td><input id="dbname" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="real-sql">
+            <tr class="real-sql mysql-socket-sql">
                 <td><label class="translate" for="user">User</label></td>
                 <td><input id="user" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="real-sql">
+            <tr class="real-sql mysql-socket-sql">
                 <td><label class="translate" for="password">Password</label></td>
                 <td><input id="password" type="password" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="real-sql">
+            <tr class="real-sql mysql-socket-sql">
                 <td><label class="translate" for="passwordConfirm">Password confirm</label></td>
                 <td><input id="passwordConfirm" type="password"/></td>
                 <td></td>
@@ -213,12 +228,12 @@
                 <td><input id="encrypt" type="checkbox" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="ms-sql real-sql">
+            <tr class="ms-sql real-sql mysql-socket-sql">
                 <td><label class="translate" for="round">Round real to:</label></td>
                 <td><input id="round" class="value"/></td>
                 <td></td>
             </tr>
-            <tr class="ms-sql real-sql">
+            <tr class="ms-sql real-sql mysql-socket-sql">
                 <td><label class="translate" for="multiRequests">Allow parallel requests:</label></td>
                 <td><input id="multiRequests" type="checkbox" class="value"/></td>
                 <td></td>
