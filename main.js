@@ -249,6 +249,7 @@ function connect(callback) {
         let params = {
             server:     adapter.config.host, // needed for MSSQL
             host:       adapter.config.host, // needed for PostgeSQL , MySQL
+            socketPath: adapter.config.socket, // only supported for MySQL right now
             user:       adapter.config.user,
             password:   adapter.config.password,
             max_idle:   (adapter.config.dbtype === 'sqlite') ? 1 : 2
@@ -383,6 +384,7 @@ function testConnection(msg) {
     let params = {
         server:     msg.message.config.host,
         host:       msg.message.config.host,
+        socketPath: msg.message.config.socket,
         user:       msg.message.config.user,
         password:   msg.message.config.password
     };
